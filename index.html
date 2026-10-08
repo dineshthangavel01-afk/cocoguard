@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CocoGuard | Smart Coconut Plantation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f1e8;
+            color: #26352a;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        header {
+            height: 70px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 45px;
+            border-bottom: 1px solid #ddd8ca;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: #315c38;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 21px;
+        }
+
+        .logo h2 {
+            font-size: 21px;
+            color: #315c38;
+        }
+
+        .logo p {
+            font-size: 11px;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #315c38;
+        }
+
+        .farmer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .farmer-circle {
+            width: 35px;
+            height: 35px;
+            background: #e2eadc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 390px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(26, 56, 31, 0.38),
+                    rgba(20, 45, 25, 0.62)
+                ),
+                url("https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .small-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #d8e9b8;
+        }
+
+        .hero p {
+            max-width: 620px;
+            line-height: 1.7;
+            font-size: 16px;
+            color: #edf3e9;
+        }
+
+        .hero-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .button {
+            padding: 12px 21px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .button-primary {
+            background: #d6a84d;
+            color: #272414;
+        }
+
+        .button-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* ---------- MAIN ---------- */
+
+        main {
+            width: 90%;
+            max-width: 1250px;
+            margin: 35px auto 70px;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h2 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .section-heading p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* ---------- STATISTICS ---------- */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 35px;
+        }
+
+        .stat {
+            background: white;
+            padding: 22px;
+            border: 1px solid #ddd8ca;
+            border-radius: 8px;
+        }
+
+        .stat-title {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 29px;
+            font-weight: 600;
+            color: #315c38;
+        }
+
+        .stat-note {
+            font-size: 12px;
+            margin-top: 8px;
+            color: #6b806c;
+        }
+
+        /* ---------- TWO COLUMNS ---------- */
+
+        .grid-two {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid #ddd8ca;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 18px 21px;
+            border-bottom: 1px solid #e6e2d8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .panel-header span {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .panel-body {
+            padding: 20px;
+        }
+
+        /* ---------- PLANTATION MAP ---------- */
+
+        .map {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(70, 105, 64, 0.12),
+                    rgba(70, 105, 64, 0.12)
+                ),
+                repeating-linear-gradient(
+                    45deg,
+                    #d8d0ae 0px,
+                    #d8d0ae 25px,
+                    #d1c79e 26px,
+                    #d1c79e 50px
+                );
+        }
+
+        .map-title {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            padding: 9px 13px;
+            border-radius: 5px;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        .tree {
+            position: absolute;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .tree.healthy {
+            filter: none;
+        }
+
+        .tree.warning {
+            filter: sepia(1);
+        }
+
+        .tree.danger {
+            filter: saturate(2);
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: white;
+            padding: 10px 14px;
+            border-radius: 5px;
+            font-size: 11px;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* ---------- DRONE ---------- */
+
+        .drone-box {
+            display: flex;
+            gap: 17px;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .drone-icon {
+            width: 65px;
+            height: 65px;
+            background: #e8eee4;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 29px;
+        }
+
+        .drone-box h4 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .drone-box p {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .scan-status {
+            margin-top: 18px;
+            background: #eef5e9;
+            border-left: 4px solid #527d4d;
+            padding: 13px;
+            font-size: 13px;
+        }
+
+        /* ---------- DETECTION ---------- */
+
+        .detection {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detection:last-child {
+            border-bottom: none;
+        }
+
+        .tree-photo {
+            height: 70px;
+            width: 100px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+        }
+
+        .tree-photo.one {
+            background-image: url("https://images.unsplash.com/photo-1582270728587-4f6e5f5e9e9f?auto=format&fit=crop&w=400&q=80");
+        }
+
+        .tree-photo.two {
+            background-image: url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=400&q=80");
+        }
+
+        .detection h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .detection p {
+            color: #777;
+            font-size: 11px;
+        }
+
+        .badge {
+            padding: 5px 9px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
+        .high {
+            background: #f3dddd;
+            color: #9a3838;
+        }
+
+        .medium {
+            background: #f5ead0;
+            color: #886c27;
+        }
+
+        .low {
+            background: #e2eedf;
+            color: #4d7049;
+        }
+
+        /* ---------- TREATMENT ---------- */
+
+        .treatment {
+            background: #315c38;
+            color: white;
+            padding: 27px;
+            border-radius: 8px;
+        }
+
+        .treatment h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .treatment p {
+            color: #dce7da;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .treatment-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 22px;
+            gap: 15px;
+        }
+
+        .treatment-detail {
+            background: rgba(255,255,255,0.09);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .treatment-detail span {
+            display: block;
+            font-size: 11px;
+            color: #c9d8c7;
+            margin-bottom: 6px;
+        }
+
+        .treatment-detail strong {
+            font-size: 18px;
+        }
+
+        /* ---------- SAVINGS ---------- */
+
+        .savings {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .saving-box {
+            background: #fff;
+            border: 1px solid #ddd8ca;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .saving-box h4 {
+            font-size: 13px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .saving-number {
+            font-size: 25px;
+            color: #315c38;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .bar {
+            margin-top: 12px;
+            height: 7px;
+            background: #e7e4dc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #739b62;
+            border-radius: 5px;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: #263a29;
+            color: #d5ddd4;
+            padding: 28px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media(max-width: 850px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 25px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-two {
+                grid-template-columns: 1fr;
+            }
+
+            .savings {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .treatment-details {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        <div class="logo-icon">🌴</div>
+
+        <div>
+            <h2>CocoGuard</h2>
+            <p>Smart Coconut Plantation Monitoring</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Plantation</a>
+        <a href="#">Detection</a>
+        <a href="#">Treatment</a>
+        <a href="#">Reports</a>
+    </nav>
+
+    <div class="farmer">
+        <div class="farmer-circle">👨‍🌾</div>
+        <span>Farmer</span>
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-label">
+            ● Plantation monitoring active
+        </div>
+
+        <h1>
+            Protect your coconut trees<br>
+            with <span>smarter monitoring.</span>
+        </h1>
+
+        <p>
+            CocoGuard combines drone imaging, AI-based pest detection
+            and GPS mapping to help farmers identify affected coconut
+            trees and apply treatment only where it is needed.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="button button-primary"
+                    onclick="scrollToDashboard()">
+                View Plantation
+            </button>
+
+            <button class="button button-secondary"
+                    onclick="showScan()">
+                Latest Drone Scan
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAIN ================= -->
+
+<main id="dashboard">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Plantation overview</h2>
+            <p>Last scanned today at 10:42 AM</p>
+        </div>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <div class="stat-title">
+                Trees scanned
+            </div>
+
+            <div class="stat-value">
+                1,250
+            </div>
+
+            <div class="stat-note">
+                Across 8.4 acres
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-title">
+                Healthy trees
+            </div>
+
+            <div class="stat-value">
+                1,108
+            </div>
+
+            <div class="stat-note">
+                88.6% of plantation
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-title">
+                Trees requiring attention
+            </div>
+
+            <div class="stat-value">
+                92
+            </div>
+
+            <div class="stat-note">
+                Early symptoms detected
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-title">
+                High-risk trees
+            </div>
+
+            <div class="stat-value">
+                50
+            </div>
+
+            <div class="stat-note">
+                Treatment recommended
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAP + DRONE -->
+
+    <section class="grid-two">
+
+
+        <!-- MAP -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h3>Plantation map</h3>
+
+                <span>GPS monitoring</span>
+
+            </div>
+
+            <div class="map">
+
+                <div class="map-title">
+                    Kanyakumari Coconut Plantation
+                </div>
+
+
+                <!-- Trees -->
+
+                <span class="tree healthy" style="left:10%;top:30%;">🌴</span>
+                <span class="tree healthy" style="left:20%;top:20%;">🌴</span>
+                <span class="tree healthy" style="left:30%;top:40%;">🌴</span>
+                <span class="tree warning" style="left:40%;top:25%;">🌴</span>
+                <span class="tree healthy" style="left:50%;top:45%;">🌴</span>
+                <span class="tree danger" style="left:62%;top:30%;">🌴</span>
+                <span class="tree healthy" style="left:75%;top:45%;">🌴</span>
+                <span class="tree warning" style="left:84%;top:25%;">🌴</span>
+
+                <span class="tree healthy" style="left:15%;top:65%;">🌴</span>
+                <span class="tree healthy" style="left:28%;top:75%;">🌴</span>
+                <span class="tree danger" style="left:43%;top:65%;">🌴</span>
+                <span class="tree healthy" style="left:56%;top:75%;">🌴</span>
+                <span class="tree healthy" style="left:70%;top:65%;">🌴</span>
+                <span class="tree danger" style="left:82%;top:75%;">🌴</span>
+
+
+                <div class="map-legend">
+
+                    <span>🟢 Healthy</span>
+                    <span>🟡 Suspected</span>
+                    <span>🔴 High risk</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DRONE -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h3>Latest drone scan</h3>
+
+                <span>Today</span>
+
+            </div>
+
+            <div class="panel-body">
+
+                <div class="drone-box">
+
+                    <div class="drone-icon">
+                        🚁
+                    </div>
+
+                    <div>
+
+                        <h4>Survey completed</h4>
+
+                        <p>
+                            Flight ID: CG-2026-1042
+                        </p>
+
+                        <p>
+                            Coverage: 8.4 acres
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="scan-status">
+
+                    <strong>Scan completed successfully</strong>
+
+                    <br>
+
+                    1,250 trees analysed from aerial images.
+
+                </div>
+
+
+                <br>
+
+                <p style="font-size:12px;color:#777;line-height:1.6;">
+
+                    The captured images are processed to identify
+                    visual symptoms and generate GPS-based treatment
+                    locations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI DETECTION -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <h3>Recent AI detection</h3>
+
+            <span>Latest findings</span>
+
+        </div>
+
+        <div class="panel-body">
+
+
+            <div class="detection">
+
+                <div class="tree-photo one"></div>
+
+                <div>
+
+                    <h4>Tree #KNY-0418</h4>
+
+                    <p>
+                        Possible pest damage · Confidence 91%
+                    </p>
+
+                </div>
+
+                <div class="badge high">
+                    High risk
+                </div>
+
+            </div>
+
+
+            <div class="detection">
+
+                <div class="tree-photo two"></div>
+
+                <div>
+
+                    <h4>Tree #KNY-0621</h4>
+
+                    <p>
+                        Early leaf symptoms · Confidence 76%
+                    </p>
+
+                </div>
+
+                <div class="badge medium">
+                    Medium
+                </div>
+
+            </div>
+
+
+            <div class="detection">
+
+                <div class="tree-photo one"></div>
+
+                <div>
+
+                    <h4>Tree #KNY-0815</h4>
+
+                    <p>
+                        Minor visual abnormality · Confidence 64%
+                    </p>
+
+                </div>
+
+                <div class="badge low">
+                    Low
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <br><br>
+
+
+    <!-- PRECISION TREATMENT -->
+
+    <section class="treatment">
+
+        <h3>
+            🎯 Precision treatment recommendation
+        </h3>
+
+        <p>
+            Based on the latest drone scan, treatment is recommended
+            only for the affected locations instead of spraying the
+            entire plantation.
+        </p>
+
+
+        <div class="treatment-details">
+
+            <div class="treatment-detail">
+
+                <span>
+                    Trees to treat
+                </span>
+
+                <strong>
+                    50
+                </strong>
+
+            </div>
+
+
+            <div class="treatment-detail">
+
+                <span>
+                    Estimated treatment area
+                </span>
+
+                <strong>
+                    0.7 acre
+                </strong>
+
+            </div>
+
+
+            <div class="treatment-detail">
+
+                <span>
+                    Recommended action
+                </span>
+
+                <strong>
+                    Targeted spray
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESOURCE SAVINGS -->
+
+    <section class="savings">
+
+        <div class="saving-box">
+
+            <h4>
+                Estimated chemical saving
+            </h4>
+
+            <div class="saving-number">
+                35%
+            </div>
+
+            <div class="bar">
+                <div class="bar-fill" style="width:35%;"></div>
+            </div>
+
+        </div>
+
+
+        <div class="saving-box">
+
+            <h4>
+                Estimated water saving
+            </h4>
+
+            <div class="saving-number">
+                42%
+            </div>
+
+            <div class="bar">
+                <div class="bar-fill" style="width:42%;"></div>
+            </div>
+
+        </div>
+
+
+        <div class="saving-box">
+
+            <h4>
+                Plantation requiring treatment
+            </h4>
+
+            <div class="saving-number">
+                8.3%
+            </div>
+
+            <div class="bar">
+                <div class="bar-fill" style="width:8.3%;"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+        <strong>CocoGuard</strong>
+        — Smart coconut plantation monitoring.
+    </div>
+
+    <div>
+        Prototype for Hackathon Demonstration · 2026
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function scrollToDashboard() {
+
+        document.getElementById("dashboard").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function showScan() {
+
+        alert(
+            "Latest drone scan completed successfully.\n\n" +
+            "Flight ID: CG-2026-1042\n" +
+            "Area covered: 8.4 acres\n" +
+            "Trees analysed: 1,250\n" +
+            "High-risk trees: 50"
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
